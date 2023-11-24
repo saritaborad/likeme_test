@@ -1,24 +1,33 @@
 name: Deploy to Apache
 
 on:
- push:
-  branches:
-   - master
+  push:
+    branches:
+      - master
 
 jobs:
- deploy:
-  runs-on: ubuntu-latest
+  deploy:
+    runs-on: ubuntu-latest
 
-  steps:
-   - name: Checkout code
-     uses: actions/checkout@v2
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-   - name: Set execute permissions for the script
-     run: |
-      chmod +x ./deploy.sh
+      - name: Set execute permissions for the script
+        run: |
+          chmod +x ./deploy.sh
 
-   - name: Run deployment script
-     run: |
-      bash ./deploy.sh
-     env:
-      NODE_ENV: production
+      - name: Configure SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan piks.in >> ~/.ssh/known_hosts
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Run deployment script
+        run: |
+          ./deploy.sh
+        env:
+          NODE_ENV: production
