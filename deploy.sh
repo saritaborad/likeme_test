@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set the deployment directory
-deploy_dir="/var/www/piks/public_html/likeme_test"
+deploy_dir="https://piks.in/likeme_test"
 
 # Save the 'uploads' folder path
 uploads_folder="$deploy_dir/backend/uploads"
@@ -36,7 +36,7 @@ npm run build
 
 
 # Copy the build files to the deployment directory
-cp -R build/ $deploy_dir
+cp -R build/* $deploy_dir
 
 # Check if the 'uploads' folder was moved to a temporary location
 if [ -d "$deploy_dir/uploads_temp" ]; then
