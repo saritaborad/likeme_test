@@ -15,14 +15,14 @@ jobs:
 
    - name: List contents of likeme_test directory
      run: |
-      ls -l ./likeme_test 
+      ls -l ./ 
 
    - name: Set execute permissions for the script
      run: |
-      chmod +x ./likeme_test/deploy.sh
+      chmod +x ./deploy.sh
 
    - name: Run deployment script
      run: |
-      bash ./likeme_test/deploy.sh
+      bash ./deploy.sh
      env:
       NODE_ENV: production
