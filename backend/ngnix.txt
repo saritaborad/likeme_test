@@ -1,0 +1,165 @@
+=> Ngnix is a web server and reverse proxy server 
+=> It is used to perform tasks like 
+=> load balancing
+=> SSL termination 
+=> caching 
+
+
+To install Ngnix on ubuntu
+--------------------------
+=> sudo apt update 
+=> sudo apt install nginx 
+
+
+To check Nginx in a running or not
+-------------------------------------
+=> ps -ef | grep nginx  
+
+
+To allow both ports HTTP 80 and HTTPS 443 then use the following command:
+------------------------------------------------------------------------
+=> Apache Full: It allows only the port 80.
+=> Apache HTTPS: It allows only port 443.
+
+sudo ufw allow 'Nginx Full'  // to allow port 80 and 443
+sudo ufw allow 'Nginx HTTP'  // to only allow port 80
+sudo ufw allow 'Nginx HTTPs'  // to only allow port 443
+
+
+start, stop and check status of ngnix 
+------------------------------------
+- sudo systemctl start ngnix
+- sudo systemctl stop ngnix
+- sudo systemctl restart ngnix
+- sudo systemctl status ngnix
+
+
+Check the Version of Nginx
+--------------------------
+ngnix -v 
+
+
+
+Basic config 
+----------------
+=> main config file is located at 
+/etc/nginx/ngnix.conf 
+/etc/ngnix/sites-available
+
+
+basic server block 
+------------------
+
+server {
+ listen 80;
+ server_name example.com www.example.com  // domain name 
+
+ location / {
+  root /var/www/html;  // root directory for your site 
+  index index.html // default file to serve 
+ }
+}
+
+
+testing config 
+---------------
+=> sudo ngnix -t    or 
+=> service nginx configtest
+
+
+reloading config 
+----------------
+=> sudo systemctl reload ngnix 
+
+
+Log files
+---------
+=> it keeps log files in /var/log/nginx
+
+
+Security and Permissions
+------------------------
+=> Ensure directories and file have appropriate permission 
+=> we can manage permission using chown and chmod 
+sudo chown -R www-data:www-data /var/www/html 
+sudo chmod -R 755 /var/www/html
+
+
+prepare SSL certificate 
+------------------------
+=> to enable HTTPS, we need SSL certificate 
+
+sudo apt-get install certbot python3-certbot-ngnix
+
+- run certbot to request and install SSL certificate 
+sudo certbot --ngnix -d piks.in 
+
+create config files for piks.in 
+/etc/nginx/sites-available/piks.in 
+
+server {
+  listen 80;
+  server_name piks.in www.piks.in
+
+  location / {
+   proxy_pass http://backend;
+   proxy_set_header Host $host;
+   proxy_set_header X-Real-IP $remote_addr;
+  }
+}
+
+upstream backend {
+ server localhost:5001
+ server localhost:5002
+}
+
+
+Enable site configuration 
+-------------------------
+create symbolic link to enable site config 
+sudo ln -s /etc/ngnix/sites-available/piks.in /etc/ngnix/sites.enabled
+
+
+server {
+    listen 80;
+    server_name piks.in www.piks.in;
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    server_name piks.in www.piks.in;
+    
+    ssl_certificate /etc/letsencrypt/live/piks.in/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/piks.in/privkey.pem;
+    
+    location / {
+        proxy_pass http://127.0.0.1:3000;
+    }
+
+    location /new_admin {
+        proxy_pass http://localhost:8000;
+    }
+
+}
+
+nginx command list 
+------------------
+- systemctl status nginx
+- sudo systemctl start nginx
+
+
+HTTP Load Balancing
+Proxying HTTP Traffic to a Group of Servers
+------------------------------------------- 
+
+Ngnix Directives
+-----------------
+
+server:
+Use: Defines the configuration block for a particular server (virtual host).
+
+server {
+    listen 80;
+    server_name example.com;
+}

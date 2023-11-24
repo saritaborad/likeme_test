@@ -1,0 +1,32 @@
+--> To zip any folder in ubuntu 
+zip -r my_project.zip . --exclude=node_modules/ --exclude=dist/ --exclude=other_folder/
+
+for cron in apache linux -/etc/crontab
+------------------------
+
+--> To list cron jobs running 
+crontab -l
+
+--> to open cron file in edit mode 
+crontab -e
+
+--> exit from crontab edit file
+ctrl + z 
+
+--> open crontab with editor
+EDITOR=nano crontab -e 
+
+==> host laravel project on apache sub directory
+--> https://www.iankumu.com/blog/how-to-deploy-laravel-on-apache-server/
+
+==> check server timezone 
+---> timedatectl
+
+==> set timezone on server
+---> sudo timedatectl set-timezone Asia/Singapore
+
+==> zip first 100 files 
+---> zip -r 1000.zip $(ls | head -n 1000)
+
+=> zip from 100 to next limit
+---> zip -r next_100_files.zip $(ls | tail -n +101 | head -n 100)

@@ -1,0 +1,9 @@
+
+
+--> apache2 command list 
+
+Configure Server Hostname:
+--> sudo hostnamectl set-hostname piks.in
+
+to give permission to access folder from server
+chmod u+rwx

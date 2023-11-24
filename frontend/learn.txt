@@ -1,0 +1,23 @@
+--------------------- frontend -------------------
+let config = {
+  headers: {
+    'Content-Type': 'application/json',
+    Accept: 'application/pdf',
+    Authorization: tokenData ? tokenData : '',
+  },
+  withCredentials: true, // Include this line to enable cookie handling
+};
+
+----------------------backend --------------------
+const express = require('express');
+const cookieParser = require('cookie-parser');
+
+const app = express();
+
+// Use the cookie-parser middleware
+app.use(cookieParser());
+
+---------------- send only token in cookie -----------
+If you want to explicitly set only one cookie and avoid including other cookies in your request, you can use the following approach:
+
+Cookie: `authtoken=${token || ''};`

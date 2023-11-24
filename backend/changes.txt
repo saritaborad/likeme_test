@@ -1,0 +1,227 @@
+agent model
+=> country field => contry
+=> version => string
+
+
+=> add no image image in frontend
+
+https://web-blog-three.vercel.app/
+
+
+
+table         last added id 
+---------------------------
+user               - 152696   - addRelationalDB
+agent              - 46   
+country            - 36       
+gifts              - 105      - addNormalDB
+images             - 5702     - addUserIdToDB
+video              - 1598     - addUserIdToDB
+message            - 109      - addNormalDB
+notification       - 27100    - addUserIdToDB
+host_live_track    - 24916    - addUserIdToDB
+redeem             - 1284     - addUserIdToDB
+subscription       - 57       - addNormalDB
+user_gain_history  - 137462   - addUserIdToDB
+user_spend_history - 172742   - addUserIdToDB
+reportresons       - 8        - addNormalDB
+
+if entry is high to low - changeJSON
+after adding new data to user - changeArrOfDb
+
+
+
+
+-------------- android API ------------------
+
+save_profile - checked
+remove_from_save - checked
+report - checked
+interestedCountry - checked
+userlanguage - checked
+getFast - checked
+diamondPlus - checked
+diamondMinus - checked
+fetchRedeemRequests - checked
+notificationRemove - checked
+blockHost - checked
+unblockHost - checked
+userProfileUpdate - checked
+userVersionUpdate - checked
+getUserProfile - checked
+delete_profile - checked
+register - checked
+registerFast - checked
+allSubcription -checked
+get_host_profile_one_to_one - checked
+listOrder - checked
+getNotificationTable - checked
+giftList - checked
+host_live_stream_track - checked
+host_live_stream_track_history - checked
+host_live_stream_track_history_list -checked
+fetchBlockList - checked
+get_host_profile - checked
+get_saved_profile - checked
+fetchHostProfiles - checked
+fetchHostProfilesNew - checked
+fetchAllHost_historyApi - checked
+privacyPolicy - checked
+reportReson - checked
+country_list - checked
+PaymentGetWayList - checked
+fetchHostProfiles_one_to_one - checked
+all_setting - checked
+find_random_host - checked
+fakeMessagesList - checked
+updateUserCallStatus -checked
+hostProfileUpdate -checked
+onOff_video_call -checked
+placeRedeemRequestAll -checked
+placeRedeemRequest -checked
+sendNotificationToUsers -checked
+
+
+
+-------------- admin API -------------------
+
+fetchDashboardCount - checked 
+fetchAgentDashboard - checked 
+fetchAllUser - checked 
+fetchHosts - checked 
+fetchHostVideos - checked 
+
+
+
+
+
+changes to be done 
+
+adminuser
+ - id 
+
+admob 
+ - id
+
+app 
+ - id 
+
+message 
+  -id 
+
+notification_admin 
+ - id 
+
+subscription 
+ - id 
+
+report_reason 
+ - id  
+
+gifts 
+ - id 
+ - images
+
+notification_packagename
+ - id 
+ - date 
+
+
+
+
+
+
+
+------------------ relational ---------------
+
+contry 
+ -id
+
+agent 
+ - id
+ - country_id 
+ - images 
+ - created_at
+
+user
+ - id 
+ - agent_id(user - 1 / 2)   
+ - country_id 
+ - save_profile  - user_id
+ - created_at 
+ - updated_at 
+ - interested_country - country_id
+ - profileimages 
+ - is_block_list - user_id
+
+ notification 
+ - id 
+ - created_at
+ - updated_at
+ - user_id
+
+
+image 
+- id 
+- user_id
+- image 
+
+ 
+host_live_stream 
+ - id
+ - host_id 
+ - start 
+ - end 
+
+user_gain_history 
+ - id 
+ - user_id 
+ - created_at
+
+user_spend_history 
+ - id 
+ - send_by  - user_id  
+ - received_by - host_id 
+ - created_at 
+
+video 
+ - id 
+ - user_id 
+ - video 
+ - thumb_img 
+
+ redeem 
+ - id 
+ - user_id 
+ - created_at
+ - updated_at
+ - completed_at 
+ 
+
+
+
+
+
+
+----------------------------
+
+ report 
+ - id 
+ - user_id
+
+video_fake 
+ - id 
+ - user_id 
+ - video 
+ - thumb_img
+
+ video_review 
+ - id 
+ - user_id 
+ - video 
+ - thum_img 
+
+ imageReview 
+ - id
+ - user_id
+ - image 
