@@ -22,7 +22,7 @@ const {PUBLIC_URL} = process.env
 const AppRoutes: FC = () => {
   const {currentUser} = useAuth()
   return (
-    <BrowserRouter basename='/likeme'>
+    <BrowserRouter basename='/likeme_test'>
       <Routes>
         <Route element={<App />}>
           <Route path='error/*' element={<ErrorsPage />} />
