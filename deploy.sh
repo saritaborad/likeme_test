@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set the deployment directory
-deploy_dir="user@piks.in:/var/www/piks/public_html/likeme_test"
+deploy_dir="root@piks.in:/var/www/piks/public_html/likeme_test"
 
 # Save the 'uploads' folder path
 uploads_folder="$deploy_dir/backend/uploads"
