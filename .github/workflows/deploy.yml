@@ -19,12 +19,16 @@ jobs:
 
       - name: Configure SSH key
         run: |
-          mkdir -p ~/.ssh
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          mkdir -p ~/.ssh/
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan piks.in >> ~/.ssh/known_hosts
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Debug SSH connection
+        run: |
+          ssh -T -v -i ~/.ssh/id_rsa root@piks.in
 
       - name: Run deployment script
         run: |
