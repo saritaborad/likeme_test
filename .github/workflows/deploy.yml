@@ -30,8 +30,5 @@ jobs:
         run: |
           ssh -T -v -i ~/.ssh/id_rsa root@piks.in
 
-      - name: Run deployment script
-        run: |
-         ssh -T -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no root@piks.in "bash -s" < ./deploy.sh
         env:
           NODE_ENV: production
