@@ -30,7 +30,7 @@ jobs:
 
       - name: Debug SSH connection
         run: |
-          export GIT_SSH="ssh -o 'PasswordAuthentication no'"
+          ssh -t root@piks.in
          
 
       - name: Run deployment script
