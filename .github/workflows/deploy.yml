@@ -16,6 +16,15 @@ jobs:
       - name: Debug SSH_PRIVATE_KEY
         run: echo "$SSH_PRIVATE_KEY"
 
+      - name: Start SSH Agent
+        run: eval "$(ssh-agent -s)"
+    
+      - name: Add SSH key
+        run: ssh-add /home/runner/.ssh/id_rsa
+
+      - name: Debug SSH Configuration
+        run: cat /home/runner/.ssh/config
+
 
       - name: Configure SSH key
         run: |
@@ -29,9 +38,15 @@ jobs:
       - name: Debug SSH Key Content
         run: cat /home/runner/.ssh/id_rsa
 
+      - name: Debug Known Hosts
+        run: cat /home/runner/.ssh/known_hosts
+
+
       - name: Set execute permissions for the script
         run: |
           chmod +x ./deploy.sh
+          ssh -i /home/runner/.ssh/id_rsa root@piks.in
+
 
       - name: Run deployment script
         run: |
