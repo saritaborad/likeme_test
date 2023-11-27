@@ -31,7 +31,7 @@ jobs:
       - name: Debug SSH connection
         run: |
           ssh -v root@piks.in
-          ssh -T -v -i ~/.ssh/id_rsa root@piks.in
+         
 
       - name: Run deployment script
         run: |
