@@ -6,7 +6,7 @@ deploy_path="/var/www/piks/public_html/likeme_test"
 deploy_dir="$deploy_host:$deploy_path"
 ssh_key_path="$HOME/.ssh/id_rsa"  # Adjust the path based on your actual key location
 
-# Save the 'uploads' folder path
+
 uploads_folder="$deploy_path/backend/uploads"
 
 # Check if the 'uploads' folder exists on the server
