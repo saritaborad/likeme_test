@@ -30,7 +30,7 @@ jobs:
 
       - name: Debug SSH connection
         run: |
-          ssh -v root@piks.in
+          ssh -o 'PasswordAuthentication no'
          
 
       - name: Run deployment script
