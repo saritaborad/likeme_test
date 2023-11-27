@@ -32,6 +32,6 @@ jobs:
 
       - name: Run deployment script
         run: |
-          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa root@piks.in "bash -s" < ./deploy.sh
+          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@piks.in "bash -s" < ./deploy.sh
         env:
           NODE_ENV: production
