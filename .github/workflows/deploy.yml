@@ -20,20 +20,14 @@ jobs:
         run: eval "$(ssh-agent -s)"
     
       - name: Add SSH key
-        run: ssh-add /home/runner/.ssh/id_rsa
-
-      - name: Debug SSH Configuration
-        run: cat /home/runner/.ssh/config
-
-
-      - name: Configure SSH key
         run: |
           mkdir -p ~/.ssh
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -t rsa piks.in >> ~/.ssh/known_hosts
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-add /home/runner/.ssh/id_rsa
+
+      - name: Debug SSH Configuration
+        run: cat /home/runner/.ssh/config
 
       - name: Debug SSH Key Content
         run: cat /home/runner/.ssh/id_rsa
@@ -41,15 +35,13 @@ jobs:
       - name: Debug Known Hosts
         run: cat /home/runner/.ssh/known_hosts
 
-
       - name: Set execute permissions for the script
-        run: |
-          chmod +x ./deploy.sh
-          ssh -i /home/runner/.ssh/id_rsa root@piks.in
+        run: chmod +x ./deploy.sh
 
+      - name: SSH to server for debugging
+        run: ssh -i /home/runner/.ssh/id_rsa root@piks.in
 
       - name: Run deployment script
-        run: |
-          bash ./deploy.sh
+        run: bash ./deploy.sh
         env:
           NODE_ENV: production
