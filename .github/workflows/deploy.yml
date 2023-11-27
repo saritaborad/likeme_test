@@ -26,6 +26,9 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
+      - name: Debug SSH Key Content
+        run: cat /home/runner/.ssh/id_rsa
+
       - name: Set execute permissions for the script
         run: |
           chmod +x ./deploy.sh
