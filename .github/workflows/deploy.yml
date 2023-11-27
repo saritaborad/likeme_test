@@ -1,10 +1,3 @@
-name: Deploy to Apache
-
-on:
-  push:
-    branches:
-      - master
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -13,36 +6,30 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Debug SSH_PRIVATE_KEY
-        run: echo "$SSH_PRIVATE_KEY"
-
-
-      - name: Start SSH Agent and Add Key
+      - name: Configure SSH key
         run: |
-          eval "$(ssh-agent -s)"
           mkdir -p ~/.ssh
-          echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          eval "$(ssh-agent -s)"
-          ssh-add ~/.ssh/id_rsa
+          ssh-keyscan -t rsa piks.in >> ~/.ssh/known_hosts
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
+      - name: Start SSH Agent
+        run: eval "$(ssh-agent -s)"
 
-      - name: Debug SSH Configuration
-        run: cat ~/.ssh/config
+      - name: Add SSH key
+        run: |
+          ssh-add ~/.ssh/id_rsa || exit 0
 
-      - name: Debug SSH Key Content
-        run: cat ~/.ssh/id_rsa
-
-      - name: Debug Known Hosts
-        run: cat ~/.ssh/known_hosts
+      - name: Debug SSH Connection
+        run: ssh -T git@piks.in
 
       - name: Set execute permissions for the script
         run: chmod +x ./deploy.sh
 
-      - name: SSH to server for debugging
-        run: ssh -i ~/.ssh/id_rsa root@piks.in
-
       - name: Run deployment script
-        run: bash ./deploy.sh
+        run: |
+          bash ./deploy.sh
         env:
           NODE_ENV: production
