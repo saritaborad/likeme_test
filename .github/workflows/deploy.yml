@@ -16,15 +16,14 @@ jobs:
       - name: Debug SSH_PRIVATE_KEY
         run: echo "$SSH_PRIVATE_KEY"
 
-      - name: Debug SSH Key Content
-        run: cat ~/.ssh/id_rsa
 
       - name: Start SSH Agent and Add Key
         run: |
           eval "$(ssh-agent -s)"
           mkdir -p ~/.ssh
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
+          eval "$(ssh-agent -s)"
           ssh-add ~/.ssh/id_rsa
 
 
