@@ -7,8 +7,13 @@ deploy_dir="$deploy_host:$deploy_path"
 ssh_key_path="$HOME/.ssh/id_rsa"  # Adjust the path based on your actual key location
 
 
+
 # Save the 'uploads' folder path
 uploads_folder="$deploy_path/backend/uploads"
+cat $ssh_key_path
+chmod 600 $ssh_key_path
+
+ssh -i /home/runner/.ssh/id_rsa root@piks.in
 
 # Check if the 'uploads' folder exists on the server
 if ssh -i $ssh_key_path $deploy_host "[ -d $uploads_folder ]"; then
@@ -35,5 +40,5 @@ if ssh -i $ssh_key_path $deploy_host "[ -d $deploy_path/uploads_temp ]"; then
 fi
 
 # Optional: Remove the frontend directory locally if you no longer need it
-rm -r /path/to/your/local/repository/frontend
+# rm -r /path/to/your/local/repository/frontend
 
