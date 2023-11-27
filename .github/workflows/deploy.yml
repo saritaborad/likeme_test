@@ -19,6 +19,7 @@ jobs:
 
       - name: Configure SSH key
         run: |
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa root@piks.in
           mkdir -p ~/.ssh
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
