@@ -13,22 +13,29 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set execute permissions for the script
-        run: |
-          chmod +x ./deploy.sh
-
       - name: Configure SSH key
         run: |
           mkdir -p ~/.ssh
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan piks.in >> ~/.ssh/known_hosts
+          ssh-keyscan -t rsa piks.in >> ~/.ssh/known_hosts
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
+          
+      - name: Set execute permissions for the script
+        run: |
+          chmod +x ./deploy.sh
+          
+
       - name: Debug SSH connection
         run: |
-          ssh -T -v -i ~/.ssh/id_rsa root@piks.in
+          ssh -t root@piks.in
+         
+
+      - name: Run deployment script
+        run: |
+          bash ./deploy.sh
 
         env:
           NODE_ENV: production
