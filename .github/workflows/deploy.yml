@@ -30,7 +30,7 @@ jobs:
 
       - name: Debug SSH connection
         run: |
-          ssh -o 'PasswordAuthentication no'
+          export GIT_SSH="ssh -o 'PasswordAuthentication no'"
          
 
       - name: Run deployment script
