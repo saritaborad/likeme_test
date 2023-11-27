@@ -13,6 +13,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Debug SSH_PRIVATE_KEY
+        run: echo "$SSH_PRIVATE_KEY"
+
+
       - name: Configure SSH key
         run: |
          mkdir -p ~/.ssh
