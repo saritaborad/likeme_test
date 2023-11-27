@@ -15,7 +15,7 @@ if ssh -i $ssh_key_path $deploy_host "[ -d $uploads_folder ]"; then
   ssh -i $ssh_key_path $deploy_host "mv $uploads_folder $deploy_path/uploads_temp"
 fi
 
-# Pull the latest changes from the remote repository (assuming the branch is 'master')
+
 git pull origin master
 
 # Navigate to the backend directory on the server
