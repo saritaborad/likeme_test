@@ -16,6 +16,9 @@ jobs:
       - name: Debug SSH_PRIVATE_KEY
         run: echo "$SSH_PRIVATE_KEY"
 
+      - name: Debug SSH Key Content
+        run: cat ~/.ssh/id_rsa
+
       - name: Start SSH Agent and Add Key
         run: |
           eval "$(ssh-agent -s)"
