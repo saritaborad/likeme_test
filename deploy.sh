@@ -9,7 +9,7 @@ ssh_key_path="$HOME/.ssh/id_rsa"  # Adjust the path based on your actual key loc
 
 uploads_folder="$deploy_path/backend/uploads"
 
-# Check if the 'uploads' folder exists on the server
+
 if ssh -i $ssh_key_path $deploy_host "[ -d $uploads_folder ]"; then
   # If it exists, move it to a temporary location
   ssh -i $ssh_key_path $deploy_host "mv $uploads_folder $deploy_path/uploads_temp"
