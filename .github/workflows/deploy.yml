@@ -19,8 +19,8 @@ jobs:
 
       - name: Configure SSH key
         run: |
-          mkdir -p ~/.ssh/
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan piks.in >> ~/.ssh/known_hosts
         env:
@@ -32,6 +32,6 @@ jobs:
 
       - name: Run deployment script
         run: |
-          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@piks.in "bash -s" < ./deploy.sh
+         ssh -T -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no root@piks.in "bash -s" < ./deploy.sh
         env:
           NODE_ENV: production
