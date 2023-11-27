@@ -35,4 +35,5 @@ if ssh -i $ssh_key_path $deploy_host "[ -d $deploy_path/uploads_temp ]"; then
 fi
 
 # Optional: Remove the frontend directory locally if you no longer need it
-# rm -r /path/to/your/local/repository/frontend
+rm -r /path/to/your/local/repository/frontend
+
