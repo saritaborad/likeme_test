@@ -23,14 +23,9 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Start SSH Agent
-        run: eval "$(ssh-agent -s)"
-      
-      - name: Add SSH key
         run: |
-          echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ssh_key
-          chmod 600 ssh_key
-          ssh-add ssh_key
-          rm ssh_key
+          eval "$(ssh-agent -s)"
+          ssh-add <(echo "$SSH_PRIVATE_KEY" | tr -d '\r')
       
       - name: Debug SSH Connection Before
         run: ssh -T git@piks.in
