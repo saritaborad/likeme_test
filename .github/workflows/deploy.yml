@@ -12,7 +12,8 @@ jobs:
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -t rsa piks.in >> ~/.ssh/known_hosts
-    
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Start SSH Agent
         run: eval "$(ssh-agent -s)"
