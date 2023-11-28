@@ -23,21 +23,26 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Start SSH Agent
+        run: eval "$(ssh-agent -s)"
+      
+      - name: Add SSH key
         run: |
-          eval "$(ssh-agent -s)"
-          echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
-
+          echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ssh_key
+          chmod 600 ssh_key
+          ssh-add ssh_key
+          rm ssh_key
+      
       - name: Debug SSH Connection Before
         run: ssh -T git@piks.in
-
+      
       - name: Set execute permissions for the script
         run: chmod +x ./deploy.sh
-
+      
       - name: Run deployment script
         run: |
           bash ./deploy.sh
         env:
           NODE_ENV: production
-
+      
       - name: Debug SSH Connection After
         run: ssh -T git@piks.in
