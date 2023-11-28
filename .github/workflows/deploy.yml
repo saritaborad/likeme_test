@@ -25,7 +25,7 @@ jobs:
       - name: Start SSH Agent
         run: |
           eval "$(ssh-agent -s)"
-          ssh-add <(echo "$SSH_PRIVATE_KEY" | tr -d '\r')
+          echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
       
       - name: Debug SSH Connection Before
         run: ssh -T git@piks.in
