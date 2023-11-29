@@ -14,13 +14,11 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Start SSH Agent
-        run: eval "$(ssh-agent -s)"
-
-      - name: Set SSH_AUTH_SOCK
         run: |
-          echo "SSH_AUTH_SOCK=$SSH_AUTH_SOCK" >> $GITHUB_ENV
+          eval "$(ssh-agent -s)"
+          ssh-add - <<< "${SSH_PRIVATE_KEY}"
         env:
-          SSH_AUTH_SOCK: ${{ runner.ssh_sock }}
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
 
       - name: Configure SSH key
         run: |
@@ -33,9 +31,6 @@ jobs:
 
       - name: Debug SSH Agent
         run: ssh-add -L
-
-      - name: Start SSH Agent
-        run: eval "$(ssh-agent -s)"
 
       - name: Set execute permissions for the script
         run: chmod +x ./deploy.sh
