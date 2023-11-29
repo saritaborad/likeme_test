@@ -23,7 +23,9 @@ fi
 git pull origin master
 
 # Navigate to the backend directory on the server
-ssh -i $ssh_key_path root@$deploy_host "cd $deploy_path/backend && npm install --legacy-peer-deps && node index.js"
+ssh -i $ssh_key_path root@$deploy_host "cd $deploy_path/backend && npm install --legacy-peer-deps"
+
+ssh -i $ssh_key_path root@$deploy_host "cd $deploy_path/backend && pm2 restart likeme_test"
 
 # Navigate to the frontend directory on the server
 ssh -i $ssh_key_path root@$deploy_host "cd $deploy_path/frontend && npm install --legacy-peer-deps && npm run build"
