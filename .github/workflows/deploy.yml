@@ -22,6 +22,14 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
+      - name: Debug SSH Agent
+        run: |
+          ssh-add -L
+          ssh-add -l
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+
+
       - name: Debug SSH Connection Before
         run: ssh -v -T git@piks.in
 
