@@ -23,12 +23,7 @@ fi
 git pull origin master
 
 # Navigate to the backend directory on the server
-ssh -i $ssh_key_path root@$deploy_host "cd $deploy_path/backend && npm install --legacy-peer-deps"
-
-ssh -i $ssh_key_path root@$deploy_host "cd $deploy_path/backend && pm2 restart likeme_test"
-
-# Navigate to the frontend directory on the server
-ssh -i $ssh_key_path root@$deploy_host "cd $deploy_path/frontend && npm install --legacy-peer-deps && npm run build"
+ssh -i $ssh_key_path root@$deploy_host "cd $deploy_path/backend && npm install --legacy-peer-deps &&  pm2 restart likeme_test"
 
 # Copy the build files to the deployment directory on the server
 scp -i $ssh_key_path -r build/* $deploy_dir
@@ -40,5 +35,3 @@ if [ $? -eq 0 ]; then
   ssh -i $ssh_key_path root@$deploy_host "mv $deploy_path/uploads_temp $uploads_folder"
 fi
 
-# Optional: Remove the frontend directory locally if you no longer need it
-rm -r $deploy_path/frontend
