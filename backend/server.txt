@@ -1,0 +1,350 @@
+on reboot restart service
+apache --> sudo systemctl restart apache2
+	  sudo service apache2 restart
+nginx --> sudo systemctl restart nginx 
+	  sudo service nginx restart
+mysql  --> sudo systemctl start mysql.service 
+mongo  -->  sudo systemctl status mongod sudo service mongodb start
+firewall status -->sudo ufw status    
+CHECK DNS WORK ping google.com -->sudo systemctl status systemd-resolved   / sudo systemctl restart systemd-resolved    
+node version  ---> nvm ls  / nvm use
+Certificate is saved at: /etc/letsencrypt/live/liveapp.fun-0001/fullchain.pem
+Key is saved at:         /etc/letsencrypt/live/liveapp.fun-0001/privkey.pem
+
+app.codim.co.in_test
+
+BACK UP DATABSE
+MYSQL:::
+mysqldump -u phpmyadmin -p --all-databases > /var/www/groworbit/public_html/MONGO_BACKUP/vijay/snapcial_databases.sql
+
+MONGO:::
+mongodump  --username athh --password athh1507 --authenticationDatabase admin --out 07_04_2023
+
+zip -r 07_04_2023.zip 07_04_2023
+
+
+CLEAN DB:::
+  datetime: {
+            $lt: "2023-01-01 00:00:00"
+        }
+		
+		
+	7990720790	
+db.installtrack.deleteMany({datetime: {
+            $lt: "2023-01-01 00:00:00"
+        }});
+
+Cron jobs::::: ----> crontab -e
+                     EDITOR=nano crontab -e
+		     cron list crontab -l 
+1. Athh server
+2. Likeme - stop
+3. thevideocall
+
+::::::::::::::::: Athh Server :::::::::::::::::
+Ip					  New passwoed
+68.183.190.110	                        Bh^Ja/Ma@1507_athH
+
+mysql -u root -p
+sql database 
+http://68.183.190.110/phpmyadmin/index.php
+username =groworbi_wallpap
+password =r830EPcHH#~x
+photo snapcial database =vijaysir   
+
+Admin List:::
+------------- athh -------------
+club_gallery
+CUSOM_AD_DESIGNS
+gallery
+gst_calc_divine_mongo_new
+photo_snapcial
+pikso_gallery
+snappy
+video_editor
+walltanic_mongo
+wastickers_mongo
+
+------------- athhtech -------------
+athhtech_admin
+
+
+------------- groworbit -------------
+dynamic_admin
+dynamic_game_admin
+dynamic_utilities
+edgelight
+emi_calc
+FileManager
+itenicapps
+livemile
+livetalk
+photo_video_macker
+status_makker
+videocalling1
+translators
+vpn
+MONGO_BACKUP --> all database backup store
+
+
+│ id  │ name                                 │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├─────┼──────────────────────────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 9   │ citizen_calc_version_soket           │ default     │ 1.0.0   │ fork    │ 1679064  │ 7D     │ 15   │ online    │ 2.5%     │ 164.1mb  │ root     │ disabled │
+│ 12  │ color_caller_screen_version_soket    │ default     │ 1.0.0   │ fork    │ 1687600  │ 2M     │ 10   │ online    │ 0.2%     │ 75.4mb   │ root     │ disabled │
+│ 1   │ dynamic_admin                        │ default     │ 1.0.0   │ fork    │ 912606   │ 18D    │ 30   │ online    │ 1.4%     │ 116.9mb  │ root     │ disabled │
+│ 3   │ dynamic_game_admin                   │ default     │ 1.0.0   │ fork    │ 69774    │ 3M     │ 0    │ online    │ 0.2%     │ 76.0mb   │ root     │ disabled │
+│ 2   │ dynamic_utilities                    │ default     │ 1.0.0   │ fork    │ 1310547  │ 13D    │ 6    │ online    │ 0.2%     │ 82.4mb   │ root     │ disabled │
+│ 16  │ garbach_soket                        │ default     │ 1.0.0   │ fork    │ 1673894  │ 2M     │ 0    │ online    │ 0.2%     │ 81.3mb   │ root     │ disabled │
+│ 5   │ gst_calc_version_soket               │ default     │ 1.0.0   │ fork    │ 256613   │ 29D    │ 11   │ online    │ 0.2%     │ 157.7mb  │ root     │ disabled │
+│ 7   │ itenicApps                           │ default     │ 1.0.0   │ fork    │ 1388799  │ 11D    │ 2    │ online    │ 0.9%     │ 109.6mb  │ root     │ disabled │
+│ 13  │ livevideoplayapp_version_soket       │ default     │ 1.0.0   │ fork    │ 2249152  │ 2M     │ 47   │ online    │ 0.5%     │ 88.7mb   │ root     │ disabled │
+│ 15  │ photo_snapcial                       │ default     │ 1.0.0   │ fork    │ 1630713  │ 2M     │ 2    │ online    │ 10%      │ 109.8mb  │ root     │ disabled │
+│ 4   │ videocallone                         │ default     │ 1.0.0   │ fork    │ 69811    │ 3M     │ 0    │ online    │ 0.5%     │ 79.0mb   │ root     │ disabled │
+│ 6   │ whatsappApi                          │ default     │ 1.0.0   │ fork    │ 69871    │ 3M     │ 0    │ online    │ 5.3%     │ 173.8mb  │ root     │ disabled │
+
+┌────┬────────────────────┬──────────┬──────┬───────────┬──────────┬──────────┐
+│ id │ name               │ mode     │ ↺    │ status    │ cpu      │ memory   │
+├────┼────────────────────┼──────────┼──────┼───────────┼──────────┼──────────┤
+│ 2  │ dynamic_admin      │ fork     │ 0    │ online    │ 2.1%     │ 98.9mb   │
+│ 6  │ dynamic_game_admin │ fork     │ 0    │ online    │ 0.3%     │ 90.5mb   │
+│ 3  │ dynamic_utilities  │ fork     │ 0    │ online    │ 0.3%     │ 95.0mb   │
+│ 8  │ gst_calc_version_… │ fork     │ 844  │ online    │ 0.3%     │ 130.3mb  │
+│ 5  │ itenicApps         │ fork     │ 0    │ online    │ 1.4%     │ 90.9mb   │
+│ 1  │ photo_snapcial     │ fork     │ 6    │ online    │ 3.7%     │ 116.9mb  │
+│ 4  │ videocallone       │ fork     │ 917  │ online    │ 0.9%     │ 46.1mb   │
+│ 7  │ whatsappApi        │ fork     │ 0    │ online    │ 1.9%     │ 144.3mb  │
+└────┴────────────────────┴──────────┴──────┴───────────┴──────────┴──────────┘
+pm2  -->
+
+pm2 start /var/www/athh/public_html/photo_snapcial/photo_snapcial_api/photo_snapcial.js
+
+pm2 start /var/www/groworbit/public_html/dynamic_admin/d_node_api/dynamic_admin.js
+
+pm2 start /var/www/groworbit/public_html/dynamic_utilities/utilities_node_api/dynamic_utilities.js
+
+pm2 start /var/www/groworbit/public_html/dynamic_game_admin/game/dynamic_game_admin.js
+
+pm2 start /var/www/groworbit/public_html/videocalling1/videoCallOneApi/videocallone.js
+
+pm2 start /var/www/athh/public_html/Node_Api/gst_calc_version_soket.js
+
+pm2 start /var/www/athh/public_html/Node_Api/whatsappApi.js
+
+pm2 start /var/www/groworbit/public_html/itenicapps/ItenicApi/itenicApps.js
+
+::::::::::::::::: Server :::::::::::::::::
+Ip				Password	
+139.59.102.5		   At_Bh$Ja+Ma@1507
+
+------------- Admin -------------
+bdvideocall
+dynamic_admin_walltanic
+pdfconverter
+piktoon
+toonpik
+
+┌─────┬────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id  │ name           │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├─────┼────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 0   │ app            │ default     │ 1.0.0   │ fork    │ 1925     │ 5M     │ 0    │ online    │ 0%       │ 96.8mb   │ root     │ disabled │
+│ 1   │ bdvideocall    │ default     │ 1.0.0   │ fork    │ 2008     │ 5M     │ 0    │ online    │ 0%       │ 101.3mb  │ root     │ disabled │
+└─────┴────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+
+::::::::::::::::: Like Me Server :::::::::::::::::
+ mysql -u root -p
+
+ CREATE DATABASE chatgpt;
+ show table;
+ 
+Ip				Password	
+142.93.207.153		    BvM%7051(hhTa)_B
+athh@1234
+Databse:https://likeme.piks.co.in/phpmyadmin/index.php?route=/sql&server=1&db=digdig_digdig&table=subscription&pos=0
+userName:root
+password:dim@123Dim
+------------- Admin -------------
+app.codim.co.in
+┌────┬────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name   │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 0  │ app    │ default     │ 1.0.0   │ fork    │ 2367573  │ 53D    │ 0    │ online    │ 0%       │ 102.7mb  │ root     │ disabled │
+└────┴────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+ChatGpt -laravel
+
+
+::::::::::::::::: Piks.in Server :::::::::::::::::
+Ip					Password	
+piks.in		139.59.84.109 	      bharat@athh  mvB&1052!(bharat)@B
+------------- Admin -------------
+_vpn
+admin_panel
+athhtech
+bit_safe
+club_gallery
+cute_puzzle
+DIMDIM
+dynamic
+dynamic_admin
+dynamic_admin_new
+dynamic_game_admin
+edgelight
+emi_calc
+EXCEL
+FileManager
+gallery_new
+game_gamia
+game_gamia_admin
+game_gamia_client
+gamezone
+gapi
+GAPIDMO
+gst_calc_divine_mongo
+itenicapps
+livetalk
+matchcall_videocall
+milelive_videocall
+photo_snapcial
+
+
+┌─────┬────────────────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id  │ name                       │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├─────┼────────────────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 29  │ admin_api                  │ default     │ 1.0.0   │ fork    │ 16139    │ 5D     │ 1    │ online    │ 0.3%     │ 65.8mb   │ root     │ disabled │
+│ 0   │ app                        │ default     │ 1.0.0   │ fork    │ 22333    │ 5h     │ 388… │ online    │ 0.5%     │ 105.2mb  │ root     │ disabled │
+│ 23  │ likeme_live_soket          │ default     │ 1.0.0   │ fork    │ 2856     │ 3M     │ 125  │ online    │ 0.2%     │ 63.1mb   │ root     │ disabled │
+│ 1   │ photo_snapcial             │ default     │ 1.0.0   │ fork    │ 19372    │ 5M     │ 170  │ online    │ 0.2%     │ 88.6mb   │ root     │ disabled │
+│ 17  │ static-page-server-8002    │ default     │ 4.4.0   │ fork    │ 28359    │ 3M     │ 0    │ online    │ 0.2%     │ 79.5mb   │ root     │ disabled │
+└─────┴────────────────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+ 
+
+::::::::::::::::: thevideocall.com Server :::::::::::::::::
+Ip					Password	
+thevideocall.com                  BjM$7051!(HG)_Thh
+------------- Admin -------------
+all_in_one_status_maker
+dash
+vc-api
+videocall_new
+videocalling
+VideoNodeLive
+┌─────┬───────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id  │ name          │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├─────┼───────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 0   │ Video         │ default     │ N/A     │ fork    │ 16194    │ 4D     │ 136  │ online    │ 0%       │ 822.6mb  │ root     │ disabled │
+│ 2   │ VideoDebug    │ default     │ N/A     │ fork    │ 13557    │ 57D    │ 2    │ online    │ 0%       │ 100.1mb  │ root     │ disabled │
+│ 1   │ index         │ default     │ 1.0.0   │ fork    │ 13551    │ 57D    │ 52   │ online    │ 0%       │ 161.4mb  │ root     │ disabled │
+└─────┴───────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+
+:::::::::::::::::https://subaccess.videocallapps.com/:::::::::::::::::
+Ip					        Password	
+165.22.253.171	       	       	  		nirav@athh  
+
+================================Mongodb compass connection url=======================
+
+┌─────┬──────────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id  │ name                 │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├─────┼──────────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 1   │ rto_version_soket    │ default     │ 1.0.0   │ fork    │ 24589    │ 16h    │ 2    │ online    │ 1.1%     │ 87.7mb   │ root     │ disabled │
+│ 0   │ watcherPLK           │ default     │ 1.0.0   │ fork    │ 12675    │ 7m     │ 406  │ online    │ 1%       │ 67.1mb   │ root     │ disabled │
+└─────┴──────────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+
+:::::::::::::::::http://liveapp.fun:1111/ Server -contabo:::::::::::::::::
+Ip					Password	
+104.248.119.116	                      bharat@athh
+------------- Admin -------------
+0-likeme_live_socket
+┌────┬────────────────────┬──────────┬──────┬───────────┬──────────┬──────────┐
+│ id │ name               │ mode     │ ↺    │ status    │ cpu      │ memory   │
+├────┼────────────────────┼──────────┼──────┼───────────┼──────────┼──────────┤
+│ 1  │ callapp_livestrea… │ fork     │ 23   │ online    │ 0%       │ 122.1mb  │
+│ 0  │ likeme_live_soket  │ fork     │ 3811 │ online    │ 0%       │ 23.5mb   │
+│ 2  │ livecall_livestre… │ fork     │ 81   │ online    │ 0%       │ 124.5mb  │
+│ 3  │ livechatvideo_vid… │ fork     │ 3    │ online    │ 0%       │ 124.1mb  │
+│ 4  │ livevideocal_priv… │ fork     │ 6    │ online    │ 0%       │ 125.2mb  │
+│ 5  │ livevideocall_cha… │ fork     │ 3    │ online    │ 0%       │ 123.4mb  │
+│ 6  │ livevideochat_liv… │ fork     │ 3    │ online    │ 0%       │ 124.9mb  │
+│ 7  │ lvestream_livevid… │ fork     │ 3    │ online    │ 0%       │ 123.4mb  │
+│ 8  │ notification_inapp │ fork     │ 305  │ online    │ 0%       │ 117.2mb  │
+└────┴────────────────────┴──────────┴──────┴───────────┴──────────┴──────────┘
+http://64.
+
+
+
+
+:::::::::::::::::likeme socket/ Server -contabo:::::::::::::::::
+Ip					        Password	
+167.86.109.223	       close   	       	   bharat@1507     
+
+================================Mongodb compass connection url=======================
+mongodb://athhTech:y0UnXQrPkAowmJnZ@167.86.109.223:27017?retryWrites=true&w=majority
+
+------------- app Api/Admin -------------
+likemesocket example 
+
+
+
+:::::::::::::::::::::::::::::::::::::: server cresh - cpu is  high  running ::::::::::::::::::::::::::::::::::::::::
+
+plz check ssh and sshd services.
+
+sudo systemctl status ssh
+
+sudo sshd -T    - get file 
+
+sudo nano /etc/ssh/sshd_config
+add this file :- PermitRootLogin yes
+sudo service ssh restart
+
+resolve probleam :-
+https://ubuntu.com/server/docs/network-configuration
+ip a
+
+sudo lshw -class network
+
+ip addr add 139.59.84.109/20 dev eth0       //you ip
+
+ip link set dev eth0 up
+
+ip route add default via 139.59.80.1
+
+ip address show dev eth0
+
+ip router show
+
+// second
+
+sudo nano /etc/resolv.conf
+
+nameserver 8.8.8.8
+
+nameserver 8.8.4.4
+
+sudo reboot
+
+//after reboot 
+
+
+
+:::::::::::::::::::::::::::::::::::::::::::::::Mongodb :::::::::::::::::::::::::::::::::::::::::::::::::
+curl -fsSL https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
+
+apt-key list
+
+
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+
+
+sudo apt update
+
+
+sudo apt install mongodb-org
+
+sudo systemctl start mongod.service
+
+
+sudo systemctl status mongod
+
+sudo systemctl enable mongod
+
+
+sudo systemctl status mongod

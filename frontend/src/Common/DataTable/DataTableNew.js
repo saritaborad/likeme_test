@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import './tablestylenew.scss'
+import ReactPaginate from 'react-paginate'
 
 export default function RtdDatatableNew(props) {
   const [option, set_option] = useState(props.option)
@@ -71,12 +72,22 @@ export default function RtdDatatableNew(props) {
     props.tableCallBack(tmp_option)
   }
 
+  // const handlePageChange = (pageNumber) => {
+  //   console.log(pageNumber)
+  //   let tmp_option = option
+  //   tmp_option['page'] = pageNumber
+  //   set_option(tmp_option)
+  //   props.tableCallBack(tmp_option)
+  //   setCurrentPage(pageNumber)
+  // }
+
   const handlePageChange = (pageNumber) => {
+    console.log(pageNumber)
     let tmp_option = option
-    tmp_option['page'] = pageNumber
+    tmp_option['page'] = pageNumber['selected'] + 1
+    setCurrentPage(pageNumber['selected'] + 1)
     set_option(tmp_option)
     props.tableCallBack(tmp_option)
-    setCurrentPage(pageNumber)
   }
 
   const handleAllCheck = (isChecked) => {
@@ -224,7 +235,7 @@ export default function RtdDatatableNew(props) {
             <div className='col-12 p-0'>
               <div className='d-sm-flex align-items-center text-center'>
                 <div className='custom-table-page text-sm-start'>
-                  Showing {parseInt((option.page - 1) * option.sizePerPage + 1)} to {parseInt((option.page - 1) * option.sizePerPage + option.sizePerPage) > option.totalRecord ? option.totalRecord : parseInt((option.page - 1) * option.sizePerPage + option.sizePerPage)} of {option.totalRecord} entries
+                  Showing {parseInt((currentPage - 1) * option.sizePerPage + 1)} to {parseInt((currentPage - 1) * option.sizePerPage + option.sizePerPage) > option.totalRecord ? option.totalRecord : parseInt((currentPage - 1) * option.sizePerPage + option.sizePerPage)} of {option.totalRecord} entries
                 </div>
                 <div className='ms-auto d-sm-flex align-items-center mt-3 mt-sm-0'>
                   <div className='me-3'>
@@ -242,7 +253,8 @@ export default function RtdDatatableNew(props) {
                       entries
                     </label>
                   </div>
-                  <div className='pagination-custom-info mt-3 mt-sm-0 d-flex align-items-center'>
+                  <ReactPaginate nextLabel='next >' onPageChange={(e) => handlePageChange(e)} pageRangeDisplayed={3} marginPagesDisplayed={2} pageCount={Math.ceil(option.totalRecord / option.sizePerPage)} previousLabel='< previous' pageClassName='page-item' pageLinkClassName='page-link' previousClassName='page-item' previousLinkClassName='page-link' nextClassName='page-item' nextLinkClassName='page-link' breakLabel='...' breakClassName='page-item' breakLinkClassName='page-link' containerClassName='pagination' activeClassName='active' renderOnZeroPageCount={null} />
+                  {/* <div className='pagination-custom-info mt-3 mt-sm-0 d-flex align-items-center'>
                     <button disabled={currentPage === 1} onClick={() => handlePageChange(currentPage - 1)} style={{cursor: 'pointer'}}>
                       <span aria-hidden='true' style={{cursor: 'pointer'}}>
                         <svg xmlns='http://www.w3.org/2000/svg' width='18px' height='18px' viewBox='0 0 24 24' fill='none' stroke='#000' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round' className='feather feather-chevron-left'>
@@ -262,7 +274,7 @@ export default function RtdDatatableNew(props) {
                         </svg>
                       </span>
                     </button>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
