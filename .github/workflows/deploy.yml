@@ -19,12 +19,7 @@ jobs:
           echo "${SSH_PRIVATE_KEY}" | ssh-add -
         env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-
-      - name: Debug SSH Private Key
-        run: |
-          echo "${SSH_PRIVATE_KEY}" | cat -
-        env:
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Configure SSH key
         run: |
@@ -32,8 +27,8 @@ jobs:
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -t rsa piks.in >> ~/.ssh/known_hosts
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Debug SSH Agent
         run: ssh-add -L
