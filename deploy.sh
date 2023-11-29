@@ -29,7 +29,7 @@ ssh -i $ssh_key_path root@$deploy_host "cd $deploy_path/backend && npm install -
 # scp -i $ssh_key_path -r build/* $deploy_dir
 # ssh -i $ssh_key_path -r build/* $deploy_dir
 # scp -i $ssh_key_path -r build/* git@piks.in:$deploy_dir
-ssh -i $ssh_key_path root@$deploy_host "cd $deploy_path/backend && mv build/* $deploy_dir"
+ssh -i $ssh_key_path root@$deploy_host "cd $deploy_path/backend && mv build/* $deploy_path"
 
 
 ssh -i $ssh_key_path root@$deploy_host "[ -d $deploy_path/uploads_temp ]"
