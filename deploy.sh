@@ -34,5 +34,5 @@ if [ $? -eq 0 ]; then
   # If it was moved, restore it to its original location
   ssh -i $ssh_key_path root@$deploy_host "mv $deploy_path/uploads_temp $uploads_folder"
 fi
-ssh -i $ssh_key_path root@$deploy_host "rm -r $deploy_path/backend/build"
+# ssh -i $ssh_key_path root@$deploy_host "rm -r $deploy_path/backend/build"
 
