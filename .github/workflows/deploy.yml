@@ -21,6 +21,9 @@ jobs:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
+      - name: Debug SSH Agent
+        run: ssh-add -L
+        
       - name: Configure SSH key
         run: |
           mkdir -p ~/.ssh
@@ -30,8 +33,6 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: Debug SSH Agent
-        run: ssh-add -L
 
       - name: Set execute permissions for the script
         run: chmod +x ./deploy.sh
