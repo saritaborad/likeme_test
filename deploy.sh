@@ -28,7 +28,8 @@ ssh -i $ssh_key_path root@$deploy_host "cd $deploy_path/backend && npm install -
 # Copy the build files to the deployment directory on the server
 # scp -i $ssh_key_path -r build/* $deploy_dir
 # ssh -i $ssh_key_path -r build/* $deploy_dir
-scp -i $ssh_key_path -r build/* git@piks.in:$deploy_dir
+# scp -i $ssh_key_path -r build/* git@piks.in:$deploy_dir
+rsync -av -e "ssh -i $ssh_key_path" build/ git@piks.in:$deploy_dir
 
 
 
