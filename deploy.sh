@@ -20,8 +20,16 @@ if [ $? -eq 0 ]; then
 fi
 
 # Pull the latest changes from the remote repository (assuming the branch is 'master')
-git pull origin master
+git fetch origin master
 
+changed_files_backend=$(git diff --name-only HEAD origin/master -- backend)
+echo "Changed files for backend: $changed_files_backend"
+
+# Copy only the changed files to the server for backend
+for file in $changed_files_backend; do
+  echo "Copying $file to server..."
+  rsync -avz -e "ssh -i $ssh_key_path" $file root@$deploy_path/backend
+done
 
 ssh -i $ssh_key_path root@$deploy_host "cd $deploy_path/backend && npm install &&  /root/.nvm/versions/node/v19.7.0/bin/pm2 restart likeme_test"
 
