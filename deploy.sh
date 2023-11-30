@@ -23,7 +23,7 @@ git pull origin master
 
 # Use git diff to get the list of changed files for backend
 latest_commit=$(git rev-parse HEAD)
-changed_files_backend=$(git diff --name-only $latest_commit^..$latest_commit -- backend)
+changed_files_backend=$(git diff --name-only origin/master..HEAD -- backend)
 echo "Changed files for backend: $changed_files_backend"
 # Copy only the changed files to the server for backend
 for file in $changed_files_backend; do
@@ -34,7 +34,7 @@ done
 ssh -i $ssh_key_path root@$deploy_host "cd $deploy_path/backend && npm install &&  /root/.nvm/versions/node/v19.7.0/bin/pm2 restart likeme_test"
 
 
-changed_files_frontend_build=$(git diff --name-only $latest_commit^..$latest_commit -- frontend/build)
+changed_files_frontend_build=$(git diff --name-only origin/master..HEAD -- frontend/build)
 echo $changed_files_frontend_build
 # Copy only the changed files to the server for backend
 for file in $changed_files_frontend_build; do
