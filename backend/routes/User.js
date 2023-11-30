@@ -12,7 +12,7 @@ const router = express.Router();
 router.post("/multiUser", authenticate, multiUser);
 router.post("/verify_token", verifyToken);
 router.post("/logOut", logOut);
-// router.post("/fetchAllUser", authenticate, fetchAllUser);
+router.post("/fetchAllUser", authenticate, fetchAllUser);
 router.post("/AddCoin", authenticate, reqired("_id", "diamond"), AddCoin);
 router.post("/userblock", authenticate, reqired("_id", "is_block"), userblock);
 
