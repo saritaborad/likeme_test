@@ -31,7 +31,7 @@ ssh -i $ssh_key_path root@$deploy_host "cd $deploy_path/backend && npm install -
 # ssh -i $ssh_key_path root@$deploy_host "cd $deploy_path/backend && [ -d build ] && mv build/* $deploy_dir"
 # rsync -r -e "ssh -i $ssh_key_path" backend/build/ root@$deploy_dir
 
-rsync -avz -e "ssh -i $ssh_key_path" --delete backend/build/ root@$deploy_dir
+rsync -avz -e "ssh -i $ssh_key_path"  frontend/build/ root@$deploy_dir
 
 
 
