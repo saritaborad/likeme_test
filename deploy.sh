@@ -27,7 +27,7 @@ ssh -i $ssh_key_path root@$deploy_host "cd $deploy_path/backend && npm install -
 
 
 # ssh -i $ssh_key_path root@$deploy_host "cd $deploy_path/backend && mv build/* $deploy_path"
-ssh -i $ssh_key_path root@$deploy_host "cd $deploy_path/backend && [ -d build ] && mv build/* $deploy_dir"
+ssh -i $ssh_key_path root@$deploy_host "cd $deploy_path/backend && [ -d build ] && mv $deploy_path/backend/build/* $deploy_dir"
 
 
 
