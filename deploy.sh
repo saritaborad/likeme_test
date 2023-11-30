@@ -30,7 +30,7 @@ git fetch origin master
 #   echo "Copying $file to server..."
 #   rsync -avz -e "ssh -i $ssh_key_path" $file root@$deploy_path/backend                                              
 # done
-rsync -avz -e "ssh -i $ssh_key_path" /backend/ root@$deploy_path/backend
+rsync -avz -e "ssh -i $ssh_key_path" backend/ root@$deploy_host:$deploy_path/backend
 
 # ssh -i $ssh_key_path root@$deploy_host "cd $deploy_path/backend && mv build/* $deploy_path"
 # ssh -i $ssh_key_path root@$deploy_host "cd $deploy_path/backend && [ -d build ] && mv $deploy_path/backend/build/* $deploy_dir"
