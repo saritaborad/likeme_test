@@ -25,7 +25,7 @@ git pull origin master
 # Navigate to the backend directory on the server
 ssh -i $ssh_key_path root@$deploy_host "cd $deploy_path/backend && npm install --legacy-peer-deps &&  /root/.nvm/versions/node/v19.7.0/bin/pm2 restart likeme_test"
 
-# Copy the build files to the deployment directory on the server
+
 ssh -i $ssh_key_path root@$deploy_host "cd $deploy_path/backend && mv build/* $deploy_path"
 
 
