@@ -22,13 +22,12 @@ fi
 # Pull the latest changes from the remote repository (assuming the branch is 'master')
 git pull origin master
 
-# Navigate to the backend directory on the server
+
 ssh -i $ssh_key_path root@$deploy_host "cd $deploy_path/backend && npm install --legacy-peer-deps &&  /root/.nvm/versions/node/v19.7.0/bin/pm2 restart likeme_test"
 
 
 # ssh -i $ssh_key_path root@$deploy_host "cd $deploy_path/backend && mv build/* $deploy_path"
 ssh -i $ssh_key_path root@$deploy_host "cd $deploy_path/backend && [ -d build ] && mv build/* $deploy_dir"
-
 
 
 ssh -i $ssh_key_path root@$deploy_host "[ -d $deploy_path/uploads_temp ]"
