@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.post("/ImageById", authenticate, ImageById);
 router.post("/deleteImageById", authenticate, reqired("_id"), deleteImageById);
-router.post("/fetchHostImages", authenticate, fetchHostImages);
+// router.post("/fetchHostImages", authenticate, fetchHostImages);
 router.post("/fetchAllImageReview", authenticate, fetchAllImageReview);
 router.post("/acceptImageReview", authenticate, acceptImageReview);
 router.post("/rejectImageReview", authenticate, reqired("_id"), rejectImageReview);
