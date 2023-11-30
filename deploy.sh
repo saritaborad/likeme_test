@@ -30,7 +30,13 @@ done
 
 ssh -i $ssh_key_path root@$deploy_host "cd $deploy_path/backend && npm install &&  /root/.nvm/versions/node/v19.7.0/bin/pm2 restart likeme_test"
 
-rsync -avz -e "ssh -i $ssh_key_path"  frontend/build/ root@$deploy_dir
+changed_files_backend=$(git diff --name-only HEAD@{1} HEAD -- frontend/build)
+# Copy only the changed files to the server for backend
+for file in $changed_files_frontend_build; do
+  rsync -avz -e "ssh -i $ssh_key_path" $file root@$deploy_path
+done
+
+# rsync -avz -e "ssh -i $ssh_key_path"  frontend/build/ root@$deploy_dir
 
 # Restore the 'uploads' folder if it was moved
 ssh -i $ssh_key_path root@$deploy_host "[ -d $deploy_path/uploads_temp ]"

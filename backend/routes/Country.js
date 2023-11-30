@@ -5,7 +5,7 @@ const checkHeader = require("../middleware/checkHeader");
 const { authenticate } = require("../middleware/auth");
 const { reqired } = require("../middleware/validateField");
 
-router.post("/fetchAllCountry", authenticate, fetchAllCountry);
+// router.post("/fetchAllCountry", authenticate, fetchAllCountry);
 router.post("/addCountry", authenticate, reqired("country_name"), addCountry);
 router.post("/updateCountry", authenticate, reqired("_id", "country_name"), updateCountry);
 router.post("/deleteCountry", authenticate, reqired("_id"), deleteCountry);

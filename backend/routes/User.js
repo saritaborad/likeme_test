@@ -17,7 +17,7 @@ router.post("/AddCoin", authenticate, reqired("_id", "diamond"), AddCoin);
 router.post("/userblock", authenticate, reqired("_id", "is_block"), userblock);
 
 //  dashborad api
-router.post("/fetchDashboardCount", authenticate, fetchDashboardCount);
+// router.post("/fetchDashboardCount", authenticate, fetchDashboardCount);
 router.post("/fetchAgentDashboard", authenticate, fetchAgentDashboard);
 
 // -------- android api --------------

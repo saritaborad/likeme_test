@@ -17,8 +17,8 @@ const SidebarMenuMain = () => {
       ) : (
         <>
           <SidebarMenuItem to='/dashboard' icon='fas  fa-tachometer-alt' title='Dashboard' fontIcon='bi-layers' />
-          {/* <SidebarMenuItem to='/reviewImage' icon='fas fa-user-shield' title='Review Images' fontIcon='bi-layers' /> */}
-          {/* <SidebarMenuItem to='/reviewVideo' icon='fas fa-user-shield' title='Review Videos' fontIcon='bi-layers' /> */}
+          <SidebarMenuItem to='/reviewImage' icon='fas fa-user-shield' title='Review Images' fontIcon='bi-layers' />
+          <SidebarMenuItem to='/reviewVideo' icon='fas fa-user-shield' title='Review Videos' fontIcon='bi-layers' />
           <SidebarMenuItem to='/users' icon='fas fa-headset' title='Users' fontIcon='bi-layers' />
           <SidebarMenuItem to='/hosts' icon='fas fa-shield-alt' title='Host List' fontIcon='bi-layers' />
           <SidebarMenuItem to='/agents' icon='fas  fa-user-secret' title='Agents' fontIcon='bi-layers' />
