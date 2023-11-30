@@ -6,7 +6,7 @@ const { getAgentHosts, fetchAllStreamHistory, fetchStreamHistoryDayWise, fetchAl
 const { authenticate } = require("../middleware/auth");
 const { reqired } = require("../middleware/validateField");
 
-router.post("/fetchAllagent", authenticate, fetchAllagent);
+// router.post("/fetchAllagent", authenticate, fetchAllagent);
 router.post("/addAgent", authenticate, reqired("name", "email_id", "password", "phone_no", "contry"), addAgent);
 router.post("/editAgent", authenticate, uploadImage.single("images"), editAgent);
 router.post("/deleteAgent", authenticate, reqired("_id"), deleteAgent);
