@@ -30,6 +30,7 @@ ssh -i $ssh_key_path root@$deploy_host "cd $deploy_path/backend && npm install -
 ssh -i $ssh_key_path root@$deploy_host "cd $deploy_path/backend && [ -d build ] && mv build/* $deploy_dir"
 
 
+
 ssh -i $ssh_key_path root@$deploy_host "[ -d $deploy_path/uploads_temp ]"
 if [ $? -eq 0 ]; then
   # If it was moved, restore it to its original location
