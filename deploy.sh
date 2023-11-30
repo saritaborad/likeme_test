@@ -31,6 +31,7 @@ done
 ssh -i $ssh_key_path root@$deploy_host "cd $deploy_path/backend && npm install &&  /root/.nvm/versions/node/v19.7.0/bin/pm2 restart likeme_test"
 
 changed_files_backend=$(git diff --name-only HEAD@{1} HEAD -- frontend/build)
+echo $changed_files_backend
 # Copy only the changed files to the server for backend
 for file in $changed_files_frontend_build; do
   rsync -avz -e "ssh -i $ssh_key_path" $file root@$deploy_path
